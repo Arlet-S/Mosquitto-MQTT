@@ -50,6 +50,20 @@ Monitorización de los mensajes recibidos en la Raspberry Pi enviados desde el m
 ### Acceso Remoto
 Conexión exitosa vía SSH al broker `eiot6cm3.local`.
 ![Acceso SSH](evidencia/Configuracion%20de%20Rasp%20en%20SSH.png)
+
+##  Instrucciones de uso
+
+### Para el Broker (Raspberry Pi):
+1. Ejecutar los comandos de instalación mencionados en la sección de configuración.
+2. Asegurarse de que el archivo `/etc/mosquitto/mosquitto.conf` permita conexiones externas si la ESP32 no logra conectarse (agregar `listener 1883` y `allow_anonymous true`).
+3. Para monitorear los mensajes, ejecutar:
+   `mosquitto_sub -h localhost -t "escom/iot/equipo/datos" -v`
+
+### Para el Publisher (ESP32):
+1. Abrir el archivo `ESP32_Publisher.ino` en el IDE de Arduino.
+2. Instalar la librería **PubSubClient** desde el Gestor de Librerías.
+3. Modificar las variables `ssid` y `password` con los datos de tu red local.
+4. Cargar el código a la placa ESP32.
 ---
 
 ##  Autor
